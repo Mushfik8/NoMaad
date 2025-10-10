@@ -98,7 +98,7 @@ export default function Header() {
                 onClick={() => scrollToSection('gallery')}
                 className="text-2xl font-semibold text-white hover:text-indigo-400 transition py-3"
               >
-                Gallery
+                Events
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
