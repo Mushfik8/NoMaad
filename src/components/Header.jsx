@@ -44,7 +44,7 @@ export default function Header() {
             About
           </button>
           <button onClick={() => scrollToSection('gallery')} className="hover:text-indigo-400 transition">
-            Gallery
+            Event
           </button>
           <button onClick={() => scrollToSection('contact')} className="hover:text-indigo-400 transition">
             Contact
