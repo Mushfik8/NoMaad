@@ -63,6 +63,7 @@ export default function Header() {
           </button>
 
           <button
+             onClick={() => navigate('/signup')}
             className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 ease-in-out transform hover:scale-105"
           >
             Get Started
