@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +31,7 @@ export default function Header() {
       }`}
     >
       <nav className="container mx-auto flex justify-between items-center py-4 px-5 md:px-10">
-        <a href="#" className="flex items-center space-x-2 z-50">
+        <a href="/" className="flex items-center space-x-2 z-50">
           <div className="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">N</span>
           </div>
@@ -44,7 +46,7 @@ export default function Header() {
             About
           </button>
           <button onClick={() => scrollToSection('gallery')} className="hover:text-indigo-400 transition">
-            Event
+            Events
           </button>
           <button onClick={() => scrollToSection('contact')} className="hover:text-indigo-400 transition">
             Contact
@@ -52,11 +54,14 @@ export default function Header() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
+          {/* ✅ Navigate to /login */}
           <button
+            onClick={() => navigate('/login')}
             className="text-gray-300 hover:text-white font-medium border border-gray-700 hover:border-indigo-500 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/50"
           >
             Login
           </button>
+
           <button
             className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 ease-in-out transform hover:scale-105"
           >
@@ -64,6 +69,7 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden z-50 text-white p-2 hover:bg-gray-800 rounded-lg transition"
@@ -83,31 +89,35 @@ export default function Header() {
           >
             <div className="flex flex-col space-y-6 text-center">
               <button
-                onClick={() => scrollToSection('home')}
+                onClick={() => { scrollToSection('home'); setIsMobileMenuOpen(false); }}
                 className="text-2xl font-semibold text-white hover:text-indigo-400 transition py-3"
               >
                 Home
               </button>
               <button
-                onClick={() => scrollToSection('about')}
+                onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }}
                 className="text-2xl font-semibold text-white hover:text-indigo-400 transition py-3"
               >
                 About
               </button>
               <button
-                onClick={() => scrollToSection('gallery')}
+                onClick={() => { scrollToSection('gallery'); setIsMobileMenuOpen(false); }}
                 className="text-2xl font-semibold text-white hover:text-indigo-400 transition py-3"
               >
                 Events
               </button>
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }}
                 className="text-2xl font-semibold text-white hover:text-indigo-400 transition py-3"
               >
                 Contact
               </button>
               <div className="flex flex-col gap-4 pt-6">
-                <button className="text-gray-300 hover:text-white font-medium border border-gray-700 hover:border-indigo-500 px-6 py-3 rounded-lg transition-all duration-300">
+                {/* ✅ Mobile Login navigation */}
+                <button
+                  onClick={() => { navigate('/login'); setIsMobileMenuOpen(false); }}
+                  className="text-gray-300 hover:text-white font-medium border border-gray-700 hover:border-indigo-500 px-6 py-3 rounded-lg transition-all duration-300"
+                >
                   Login
                 </button>
                 <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300">
