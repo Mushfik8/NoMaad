@@ -1,14 +1,19 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterCTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
-    <section id="register" className="bg-gray-900 py-24 md:py-32 text-center relative overflow-hidden">
+    <section
+      id="register"
+      className="bg-gray-900 py-24 md:py-32 text-center relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/20 via-purple-900/20 to-indigo-900/20"></div>
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-600/10 rounded-full blur-3xl"></div>
@@ -22,7 +27,7 @@ export default function RegisterCTA() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight"
         >
-          Join NoMaad and Start Your{' '}
+          Join NoMaad and Start Your{" "}
           <span className="text-indigo-400 block mt-2">Hidden Journey</span>
         </motion.h2>
 
@@ -40,6 +45,7 @@ export default function RegisterCTA() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
+          onClick={() => navigate("/signup")}
           className="group bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-lg text-lg font-semibold shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2"
         >
           Get Registered Now
